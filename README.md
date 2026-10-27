@@ -70,13 +70,20 @@ OB-001;2026-11-03;39,00
 
 O valor do campo `obra` deve coincidir com o nome ou código cadastrado. A fonte aparece como `csv_agilean`, **não significa** que o registro veio de uma API em tempo real.
 
-## Deploy na Vercel
+## GitHub e Vercel — publicados em 27/10/2026
 
-1. Crie um novo repositório privado no GitHub de Levi, chamado `alves-lima-qualidade`.
-2. Faça o upload do conteúdo desta pasta na raiz do repositório.
-3. Na Vercel, importe esse GitHub e selecione framework **Other**, saída estática padrão, sem comando de build.
-4. Em **Supabase > Authentication > URL Configuration**, configure a URL oficial do app e os destinos de confirmação de e-mail, se necessário.
-5. Após autorização da equipe Vercel, o projeto já criado chama-se `alves-lima-qualidade`.
+- **Código:** https://github.com/levipbezerra/alves-lima-qualidade (branch `main`).
+- **Projeto ativo no Vercel:** `alves-lima-qualidade-app`, equipe `levipbezerras-projects`.
+- **Acesso:** https://alves-lima-qualidade-app.vercel.app
+- **Deploy:** conectado ao GitHub; cada alteração em `main` aciona a publicação de produção.
+- **Tecnologia:** HTML, CSS e JavaScript estáticos; sem comando de compilação.
+- **Acesso:** Supabase Auth e perfis em `alq_members`. O Vercel exige login na equipe apenas para os *previews*, não para a produção.
+
+### Confirmação de e-mail no Supabase compartilhado
+
+O aplicativo solicita `emailRedirectTo` para a origem atual da página. Em **Supabase > Authentication > URL Configuration > Redirect URLs**, adicione `https://alves-lima-qualidade-app.vercel.app/**` (ou a URL exata do app). **Não substitua a Site URL global** do Supabase compartilhado, pois esse mesmo projeto atende outro sistema. Se o destino de confirmação não estiver permitido, a confirmação poderá usar a URL global do projeto.
+
+O banco já foi provisionado e o primeiro administrador ainda precisa ser criado/autorizado seguindo as orientações anteriores. Não rode novamente a migração de inicialização neste banco.
 
 ## Limitações desta primeira entrega
 
